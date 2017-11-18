@@ -51,18 +51,11 @@ export default {
 
                     switch(change.type){
                         case 'added':
-                            if(!data.trashed)
-                                state.notes.unshift({
-                                    title: data.title,
-                                    content:  data.content,
-                                    id: id
-                                })
-                            else
-                                state.notes.trashedNotes.unshift({
-                                    title: data.title,
-                                    content:  data.content,
-                                    id: id
-                                })
+                            state.notes.unshift({
+                                title: data.title,
+                                content:  data.content,
+                                id: id
+                            })
                             break
                         case 'modified':
                             state.notes = state.notes.map( note => {
@@ -76,15 +69,40 @@ export default {
                                 }
                             })
                             break
-                        case 'deleted':
-                            var index = state.trashedNotes.findIndex(note => note.id == id)
-                            state.trashedNotes.splice(index, 1)
-                            break
                     }
 
                 })
 
             } )
+
+    },
+    [types.FETCH_TRASHED_NOTES](state){
+
+        notesRef.where('trashed', '==', true).orderBy('created')
+        .onSnapshot( snapShot => {
+            
+            snapShot.docChanges.forEach( change => {
+                
+                var data = change.doc.data()
+                var id = change.doc.id
+
+                switch(change.type){
+                    case 'added':
+                        state.notes.unshift({
+                            title: data.title,
+                            content:  data.content,
+                            id: id
+                        })
+                        break
+                    case 'deleted':
+                        var index = state.trashedNotes.findIndex(note => note.id == id);
+                        state.trashedNotes.splice(index, 1)
+                        break
+                }
+
+            })
+
+        } )
 
     }
     

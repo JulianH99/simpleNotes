@@ -4,5 +4,6 @@ export default {
     EDIT_NOTE           : 'editNote',
     GET_NOTE            : 'getNote',
     FETCH_NOTES         : 'fetchNotes',
+    FETCH_TRASHED_NOTES : 'fetchTrashedNotes',
     FULL_DELETE_NOTE    : 'fullDeleteNote'
 }
