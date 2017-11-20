@@ -5,7 +5,7 @@ import mutations from './mutations'
 
 Vue.use(Vuex)
 
-var store = Vuex.Store({
+var store = new Vuex.Store({
 
     state: {
         notes: [],
