@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <app-toolbar></app-toolbar>
-    <app-sidebar></app-sidebar>
-    <div class="content">
+    <app-toolbar v-on:toggle="toggleSidebar()"></app-toolbar>
+    <app-sidebar :active="sidebarActive" v-on:close="toggleSidebar()"></app-sidebar>
+    <div class="container">
       <router-view></router-view>
     </div>
   </div>
@@ -16,10 +16,19 @@ import AppSidebar from '@/components/AppSidebar';
 
 export default {
   name: 'app',
-  store: store,
+  data(){
+      return{
+          sidebarActive: false
+      }
+  },
   components: {
     AppToolbar,
     AppSidebar
+  },
+  methods: {
+      toggleSidebar(){
+          this.sidebarActive = !this.sidebarActive
+      }
   }
 }
 </script>
@@ -27,9 +36,11 @@ export default {
 <style lang="scss">
 
 body{
-  background: $backgroundColor;
-  
-  color: #fff;
+    background: $backgroundColor;
+    max-height: 100vh;
+    color: #fff;
 }
-
+.container{
+    //height: 90%;
+}
 </style>

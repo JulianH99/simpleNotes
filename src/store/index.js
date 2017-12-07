@@ -9,9 +9,16 @@ var store = new Vuex.Store({
 
     state: {
         notes: [],
-        trashedNotes: []
+        trashedNotes: [],
+        selectedNote: {}
     },
-    mutations : mutations
+    getters: {
+        notes : state => state.notes,
+        trashedNotes: state => state.trashedNotes,
+        selectedNote:  state => state.selectedNote
+    },
+    mutations
+    //actions
 
 })
 

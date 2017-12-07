@@ -1,9 +1,10 @@
 <template lang="pug">
 .toolbar
     .toolbar__container
-        i.material-icons.md-light.toolbar__icon#menu-button menu
+        i.material-icons.md-light.toolbar__icon#menu-button(@click="$emit('toggle')") menu
         .toolbar__title
             span Simple Notes
+
 
 </template>
 

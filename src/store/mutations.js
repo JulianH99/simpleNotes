@@ -14,7 +14,7 @@ export default {
             }
         )
     },
-    
+
     // method used to send a note to the trashed notes
     [types.DELETE_NOTE](state, payload){
         notesRef.doc(payload.note.id).set({
@@ -43,9 +43,9 @@ export default {
 
         notesRef.where('trashed', '==', false).orderBy('created')
             .onSnapshot( snapShot => {
-                
+
                 snapShot.docChanges.forEach( change => {
-                    
+
                     var data = change.doc.data()
                     var id = change.doc.id
 
@@ -61,7 +61,7 @@ export default {
                             state.notes = state.notes.map( note => {
                                 if(note.id == id){
                                     return  {
-                                        title : data.title, 
+                                        title : data.title,
                                         content: data.content,
                                         id: id
                                     }
@@ -80,9 +80,9 @@ export default {
 
         notesRef.where('trashed', '==', true).orderBy('created')
         .onSnapshot( snapShot => {
-            
+
             snapShot.docChanges.forEach( change => {
-                
+
                 var data = change.doc.data()
                 var id = change.doc.id
 
@@ -104,7 +104,23 @@ export default {
 
         } )
 
+    },
+    [types.GET_NOTE](state, payload){
+
+        notesRef.doc(payload.id).get()
+            .then(note => {
+                state.selectedNote = {
+                    id : payload.id,
+                    content : note.data().content,
+                    title : note.data().title,
+                    created : note.data().created
+
+                }
+
+            })
+
+
     }
-    
+
 
 }
