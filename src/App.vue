@@ -2,6 +2,7 @@
   <div id="app">
     <app-toolbar v-on:toggle="toggleSidebar()"></app-toolbar>
     <app-sidebar :active="sidebarActive" v-on:close="toggleSidebar()"></app-sidebar>
+    <app-fab></app-fab>
     <div class="container">
       <router-view></router-view>
     </div>
@@ -13,6 +14,7 @@
 import store from './store'
 import AppToolbar from '@/components/AppToolbar';
 import AppSidebar from '@/components/AppSidebar';
+import AppFab from '@/components/AppFab';
 
 export default {
   name: 'app',
@@ -23,7 +25,8 @@ export default {
   },
   components: {
     AppToolbar,
-    AppSidebar
+    AppSidebar,
+    AppFab
   },
   methods: {
       toggleSidebar(){

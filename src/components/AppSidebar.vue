@@ -23,6 +23,7 @@
 <style lang="scss" >
 .sidebar__wrapper{
     position: fixed;
+    z-index: 100;
     top: 0;
     //left: 0;
     width: 90%;

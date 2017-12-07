@@ -7,7 +7,7 @@
 .note_list{
     padding-left: 1em;
     padding-right: 1em;
-    padding-top: 3em;
+    padding-top: 2.5em;
 }
 
 </style>
