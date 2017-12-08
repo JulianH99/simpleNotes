@@ -73,7 +73,7 @@
             align-items: center;
             justify-content: center;
             background: $darkGray;
-
+            color: #fff;
         }
         #checkicon{
             width: 24px !important;

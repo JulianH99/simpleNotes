@@ -65,8 +65,9 @@ export default {
                                         content: data.content,
                                         id: id
                                     }
-                                    return note
+
                                 }
+                                return note
                             })
                             break
                     }

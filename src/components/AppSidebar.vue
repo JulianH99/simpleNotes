@@ -7,15 +7,15 @@
         .sidebar__content
             .sidebar__content-items
                 .sidebar__item
-                    a(href="#")
+                    router-link(to="/notes")
                         i.material-icons.md-light.sidebar__item__icon#home-icon dashboard
                         span Notes
                 .sidebar__item
-                    a(href="#")
+                    router-link(href="/trash")
                         i.material-icons.md-light.sidebar__item__icon delete
                         span Trash
                 .sidebar__item
-                    a(href="#")
+                    router-link(href="/about")
                         i.material-icons.md-light.sidebar__item__icon info
                         span About
 </template>
