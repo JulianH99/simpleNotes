@@ -1,5 +1,5 @@
 <template lang="pug">
-.fab-button
+.fab-button(@click="goToForm()")
     span.fab-button__text.material-icons add
 
 </template>
@@ -32,7 +32,9 @@
 export default {
     name: 'app-fab',
     methods: {
-
+        goToForm(){
+            this.$router.push('/add')
+        }
     }
 }
 </script>

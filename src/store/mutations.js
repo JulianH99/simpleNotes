@@ -40,7 +40,7 @@ export default {
 
     // method to fetch the notes from firebase and add them to the notes list
     [types.FETCH_NOTES](state){
-
+        state.notes = []
         notesRef.where('trashed', '==', false).orderBy('created')
             .onSnapshot( snapShot => {
 
@@ -78,7 +78,7 @@ export default {
 
     },
     [types.FETCH_TRASHED_NOTES](state){
-
+        state.trashedNotes = []
         notesRef.where('trashed', '==', true).orderBy('created')
         .onSnapshot( snapShot => {
 

@@ -1,6 +1,8 @@
 <template lang="pug">
-    .note_list(ref="notes")
-        note(v-for="note in notes" :key="note.title" :note="note")
+    div
+        app-fab
+        .note_list(ref="notes")
+            note(v-for="note in notes" :key="note.title" :note="note")
 </template>
 
 <style lang="scss">
@@ -16,6 +18,7 @@
 <script>
 import types from '../../store/types'
 import Note from './Note'
+import AppFab from '@/components/AppFab';
 
 export default {
     name: 'notes-list',
@@ -26,7 +29,8 @@ export default {
     },
 
     components: {
-        Note
+        Note,
+        AppFab
     },
     computed: {
         notes(){

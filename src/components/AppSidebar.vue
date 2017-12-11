@@ -11,11 +11,11 @@
                         i.material-icons.md-light.sidebar__item__icon#home-icon dashboard
                         span Notes
                 .sidebar__item
-                    router-link(href="/trash")
+                    router-link(to="/trash")
                         i.material-icons.md-light.sidebar__item__icon delete
                         span Trash
                 .sidebar__item
-                    router-link(href="/about")
+                    router-link(to="/about")
                         i.material-icons.md-light.sidebar__item__icon info
                         span About
 </template>

@@ -2,9 +2,10 @@
   <div id="app">
     <app-toolbar v-on:toggle="toggleSidebar()"></app-toolbar>
     <app-sidebar :active="sidebarActive" v-on:close="toggleSidebar()"></app-sidebar>
-    <app-fab></app-fab>
     <div class="container">
-      <router-view></router-view>
+        <transition name="slide-fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
   </div>
 </template>
@@ -14,7 +15,7 @@
 import store from './store'
 import AppToolbar from '@/components/AppToolbar';
 import AppSidebar from '@/components/AppSidebar';
-import AppFab from '@/components/AppFab';
+
 
 export default {
   name: 'app',
@@ -25,8 +26,7 @@ export default {
   },
   components: {
     AppToolbar,
-    AppSidebar,
-    AppFab
+    AppSidebar
   },
   methods: {
       toggleSidebar(){
@@ -45,5 +45,15 @@ body{
 }
 .container{
     //height: 90%;
+}
+.slide-fade-enter-active{
+    transition: all .7s ease;
+}
+.slide-fade-leave-active{
+    transition: all .2s;
+}
+.slide-fade-enter, .slide-fade-leave-to{
+
+    opacity: 0;
 }
 </style>

@@ -11,10 +11,10 @@
     .bottombar
         .bottombar__buttons
             button.bottombar-button
-                span.material-icons delete
+                i.material-icons delete
                 span Delete
             button.bottombar-button
-                span.material-icons#checkicon checkmark
+                i.material-icons#checkicon checkmark
                 span Save
 
 
@@ -74,6 +74,10 @@
             justify-content: center;
             background: $darkGray;
             color: #fff;
+            &:focus{
+                outline: none;
+                background: darken($darkGray, 2);
+            }
         }
         #checkicon{
             width: 24px !important;
