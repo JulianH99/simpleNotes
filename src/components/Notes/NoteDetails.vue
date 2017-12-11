@@ -13,7 +13,7 @@
             button.bottombar-button
                 i.material-icons delete
                 span Delete
-            button.bottombar-button
+            button.bottombar-button(@click="updateNote()")
                 i.material-icons#checkicon checkmark
                 span Save
 
@@ -95,6 +95,14 @@ export default {
     computed: {
         note(){
             return this.$store.getters.selectedNote
+        }
+    },
+    methods:{
+        updateNote(){
+            if(this.note.title && this.note.content){
+                this.$store.commit(types.EDIT_NOTE, {note: this.note})
+                this.$router.push('/notes')
+            }
         }
     },
     mounted(){
