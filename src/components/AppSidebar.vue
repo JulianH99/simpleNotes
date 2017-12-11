@@ -1,6 +1,6 @@
 <template lang="pug">
 .sidebar__wrapper(v-bind:class='{"show": active == true}')
-    .sidebar
+    .sidebar(@click="$emit('close')")
         .sidebar__title
             span Simple Notes
             i.material-icons(@click="$emit('close')") keyboard_arrow_left

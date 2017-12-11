@@ -119,8 +119,9 @@ export default {
                 }
 
             })
-
-
+    },
+    [types.RESET_SELECTED](state){
+        state.selectedNote = {}
     }
 
 

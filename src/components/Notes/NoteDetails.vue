@@ -111,6 +111,9 @@ export default {
 
         this.$store.commit(types.GET_NOTE, {id: id})
 
+    },
+    destroyed(){
+        this.$store.commit(types.RESET_SELECTED)
     }
 
 }
