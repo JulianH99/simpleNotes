@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <app-toolbar v-on:toggle="toggleSidebar()"></app-toolbar>
-    <app-sidebar :active="sidebarActive" v-on:close="toggleSidebar()"></app-sidebar>
+    <app-toolbar @toggle="toggleSidebar()"/>
+    <app-sidebar
+        @close="toggleSidebar()"
+        :active="sidebarActive" />
     <div class="container">
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
@@ -38,10 +40,14 @@ export default {
 
 <style lang="scss">
 
+#app, body{
+    max-height: 100vh;
+}
 body{
     background: $backgroundColor;
-    max-height: 100vh;
+
     color: #fff;
+    border: 3px solid yellow;
 }
 .container{
     //height: 90%;

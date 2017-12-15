@@ -65,7 +65,7 @@
             background: $darkGray;
             color: #fff;
             &:focus{
-                outline: none;
+
                 background: darken($darkGray, 2);
             }
         }

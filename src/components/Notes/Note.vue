@@ -4,6 +4,12 @@
         h2.title {{note.title}}
     .note__content
         p.content {{shorten(note.content)}}
+    .note__actions__container(v-if="trashed")
+        .note__actions
+            .note__button
+                i.material-icons back-arrow
+            .note__button
+                i.material-icons trash
 
 </template>
 
@@ -41,6 +47,10 @@ export default {
   props: {
       note: {
           type: Object
+      },
+      trashed:{
+          type: Boolean,
+          required: false
       }
   },
   methods: {

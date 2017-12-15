@@ -10,13 +10,13 @@
 
     .bottombar
         .bottombar__buttons
-            button.bottombar-button
+            button.bottombar-button(@click="showSnackbar()")
                 i.material-icons delete
                 span Delete
             button.bottombar-button(@click="updateNote()")
                 i.material-icons#checkicon checkmark
                 span Save
-
+    snack-bar(:isActive="activeSnackbar" v-on:yes="sendTaskToTrash()" v-on:no="cancelDelete()")
 
 </template>
 
@@ -75,7 +75,6 @@
             background: $darkGray;
             color: #fff;
             &:focus{
-                outline: none;
                 background: darken($darkGray, 2);
             }
         }
@@ -89,9 +88,18 @@
 
 <script>
 import types from '../../store/types'
+import SnackBar from './SnackBar'
 
 export default {
     name: 'note-details',
+    data(){
+        return{
+            activeSnackbar: false
+        }
+    },
+    components:{
+        SnackBar
+    },
     computed: {
         note(){
             return this.$store.getters.selectedNote
@@ -103,6 +111,16 @@ export default {
                 this.$store.commit(types.EDIT_NOTE, {note: this.note})
                 this.$router.push('/notes')
             }
+        },
+        showSnackbar(){
+            this.activeSnackbar = true;
+        },
+        sendTaskToTrash(){
+            this.$store.commit(types.DELETE_NOTE, {note: this.note})
+            this.$router.push('/notes')
+        },
+        cancelDelete(){
+            this.activeSnackbar = false;
         }
     },
     mounted(){
