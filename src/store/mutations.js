@@ -89,7 +89,7 @@ export default {
 
                 switch(change.type){
                     case 'added':
-                        state.notes.unshift({
+                        state.trashedNotes.unshift({
                             title: data.title,
                             content:  data.content,
                             id: id
@@ -119,6 +119,11 @@ export default {
                 }
 
             })
+    },
+    [types.UNDELETE_NOTE](state, payload){
+        notesRef.doc(payload.note.id).set({
+            trashed: false
+        }, {merge: true})
     },
     [types.RESET_SELECTED](state){
         state.selectedNote = {}

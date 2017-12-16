@@ -6,5 +6,6 @@ export default {
     FETCH_NOTES         : 'fetchNotes',
     FETCH_TRASHED_NOTES : 'fetchTrashedNotes',
     FULL_DELETE_NOTE    : 'fullDeleteNote',
-    RESET_SELECTED      : 'resetSelected'
+    RESET_SELECTED      : 'resetSelected',
+    UNDELETE_NOTE       : 'undeleteNote'
 }

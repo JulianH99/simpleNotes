@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import NotesList from '@/components/Notes/NoteList'
+import TrashedNoteList from '@/components/Notes/TrashedNoteList'
 import NoteDetails from '@/components/Notes/NoteDetails'
 import AddNote from '@/components/Notes/AddNote'
 
@@ -23,6 +24,10 @@ export default new Router({
         {
             path: '/add',
             component: AddNote
+        },
+        {
+            path: '/trash',
+            component: TrashedNoteList
         }
 
   ]
