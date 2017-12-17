@@ -8,14 +8,10 @@
         .content-container
             textarea(v-model="note.content" rows="18" placeholder="type something").content-input
 
-    .bottombar
-        .bottombar__buttons
-            button.bottombar-button(@click="showSnackbar()")
-                i.material-icons delete
-                span Delete
-            button.bottombar-button(@click="updateNote()")
-                i.material-icons#checkicon checkmark
-                span Save
+    bottom-bar
+        bottom-bar-button(icon="delete" text="Delete" :click-event="showSnackbar")
+        bottom-bar-button(icon="checkmark" text="Save" :click-event="updateNote")
+
     snack-bar(:isActive="activeSnackbar" v-on:yes="sendTaskToTrash()" v-on:no="cancelDelete()")
 
 </template>
@@ -57,38 +53,16 @@
             }
         }
     }
-    .bottombar{
-        position: fixed;
-        bottom: 0;
-        width: 100%;
 
-        &__buttons, &-button{
-            display: flex;
-
-        }
-        &-button{
-            width: 50%;
-            flex-direction: column;
-            padding: .5em .4em;
-            align-items: center;
-            justify-content: center;
-            background: $darkGray;
-            color: #fff;
-            &:focus{
-                background: darken($darkGray, 2);
-            }
-        }
-        #checkicon{
-            width: 24px !important;
-            //border: 1px solid red;
-        }
-    }
 }
 </style>
 
 <script>
 import types from '../../store/types'
 import SnackBar from './SnackBar'
+import BottomBar from '../BottomBar'
+import BottomBarButton from '../BottomBarButton'
+
 
 export default {
     name: 'note-details',
@@ -98,7 +72,9 @@ export default {
         }
     },
     components:{
-        SnackBar
+        SnackBar,
+        BottomBar,
+        BottomBarButton
     },
     computed: {
         note(){

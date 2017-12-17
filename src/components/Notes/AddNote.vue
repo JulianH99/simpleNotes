@@ -5,14 +5,8 @@
             input(type="text" v-model="note.title" placeholder="Title").form__input#title
         .form__group
             textarea(v-model="note.content" placeholder="Content" rows="18" resize="none").form__input#content
-    .bottombar
-        .bottombar__buttons
-            button.bottombar-button(@click="goBack()")
-                i.material-icons arrow_back
-                span Go back
-            button.bottombar-button(@click="saveNote()")
-                i.material-icons#checkicon checkmark
-                span Save
+    bottom-bar
+        bottom-bar-button(icon="checkmark" text="Save" :click-event="saveNote")
 </template>
 
 
@@ -47,38 +41,14 @@
         }
     }
 
-    .bottombar{
-        position: fixed;
-        bottom: 0;
-        width: 100%;
 
-        &__buttons, &-button{
-            display: flex;
-
-        }
-        &-button{
-            width: 50%;
-            flex-direction: column;
-            padding: .5em .4em;
-            align-items: center;
-            justify-content: center;
-            background: $darkGray;
-            color: #fff;
-            &:focus{
-
-                background: darken($darkGray, 2);
-            }
-        }
-        #checkicon{
-            width: 24px !important;
-            //border: 1px solid red;
-        }
-    }
 }
 </style>
 
 <script>
 import types from '../../store/types'
+import BottomBar from '../BottomBar'
+import BottomBarButton from '../BottomBarButton'
 
 export default {
     name: 'add-note',
@@ -86,6 +56,10 @@ export default {
         return {
             note:{}
         }
+    },
+    components:{
+        BottomBar,
+        BottomBarButton
     },
     methods: {
         goBack(){
