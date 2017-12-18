@@ -1,23 +1,23 @@
 <template lang="pug">
-.sidebar__wrapper(v-bind:class='{"show": active == true}')
-    .sidebar(@click="$emit('close')")
-        .sidebar__title
-            span Simple Notes
-            i.material-icons(@click="$emit('close')") keyboard_arrow_left
-        .sidebar__content
-            .sidebar__content-items
-                .sidebar__item
-                    router-link(to="/notes")
-                        i.material-icons.md-light.sidebar__item__icon#home-icon dashboard
-                        span Notes
-                .sidebar__item
-                    router-link(to="/trash")
-                        i.material-icons.md-light.sidebar__item__icon delete
-                        span Trash
-                .sidebar__item
-                    router-link(to="/about")
-                        i.material-icons.md-light.sidebar__item__icon info
-                        span About
+v-touch(v-on:tap="close()" v-on:swipeleft="close()")
+    .sidebar__wrapper(v-bind:class='{"show": active == true}')
+        .sidebar
+            .sidebar__title
+                span Simple Notes
+            .sidebar__content
+                .sidebar__content-items
+                    .sidebar__item
+                        router-link(to="/notes")
+                            i.material-icons.md-light.sidebar__item__icon#home-icon dashboard
+                            span Notes
+                    .sidebar__item
+                        router-link(to="/trash")
+                            i.material-icons.md-light.sidebar__item__icon delete
+                            span Trash
+                    .sidebar__item
+                        router-link(to="/about")
+                            i.material-icons.md-light.sidebar__item__icon info
+                            span About
 </template>
 
 <style lang="scss" >
@@ -101,6 +101,11 @@ export default {
     props:{
         active: {
             type: Boolean
+        }
+    },
+    methods: {
+        close(){
+            this.$emit('close')
         }
     }
 }
