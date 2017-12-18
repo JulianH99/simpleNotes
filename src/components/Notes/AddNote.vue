@@ -1,6 +1,6 @@
 <template lang="pug">
   .note-form
-    form.form
+    form.form(autocomplete="off")
         .form__group
             input(type="text" v-model="note.title" placeholder="Title").form__input#title
         .form__group

@@ -1,5 +1,5 @@
 <template lang="pug">
-.fab-button(@click="goToForm()")
+.fab-button(@click="goToForm()" title="Add note")
     span.fab-button__text.material-icons add
 
 </template>
