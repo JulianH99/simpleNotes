@@ -10,7 +10,8 @@ export default {
                 title : payload.note.title,
                 content: payload.note.content,
                 created : new Date(),
-                trashed : false
+                trashed : false,
+                user: state.user_uid
             }
         )
     },
@@ -41,7 +42,10 @@ export default {
     // method to fetch the notes from firebase and add them to the notes list
     [types.FETCH_NOTES](state){
         state.notes = []
-        notesRef.where('trashed', '==', false).orderBy('created')
+        notesRef
+            .where('trashed', '==', false)
+            .where('user', '==', state.user_uid)
+            .orderBy('created')
             .onSnapshot( snapShot => {
 
                 snapShot.docChanges.forEach( change => {
@@ -127,6 +131,10 @@ export default {
     },
     [types.RESET_SELECTED](state){
         state.selectedNote = {}
+    },
+
+    [types.SET_CURRENT_USER](state, payload){
+        state.user_uid = payload.user_uid
     }
 
 

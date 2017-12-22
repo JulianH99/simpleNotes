@@ -1,9 +1,12 @@
 <template>
   <div id="app">
-    <app-toolbar @toggle="toggleSidebar()"/>
-    <app-sidebar
-        @close="toggleSidebar()"
-        :active="sidebarActive" />
+    <div v-if="authenticatedUser">
+        <app-toolbar @toggle="toggleSidebar()"/>
+        <app-sidebar
+            @close="toggleSidebar()"
+            :active="sidebarActive" />
+    </div>
+
     <div class="container">
         <transition name="slide-fade" mode="out-in">
             <router-view></router-view>
@@ -17,7 +20,8 @@
 import store from './store'
 import AppToolbar from '@/components/AppToolbar';
 import AppSidebar from '@/components/AppSidebar';
-
+import firebase from 'firebase'
+import types from './store/types'
 
 export default {
   name: 'app',
@@ -26,14 +30,27 @@ export default {
           sidebarActive: false
       }
   },
+  computed:{
+      authenticatedUser() {
+          return firebase.auth().currentUser
+      }
+
+  },
   components: {
     AppToolbar,
     AppSidebar
   },
   methods: {
-      toggleSidebar(){
-          this.sidebarActive = !this.sidebarActive
-      }
+        toggleSidebar(){
+            this.sidebarActive = !this.sidebarActive
+        },
+        setCurrentUser(uid){
+            this.$store.commit(types.SET_CURRENT_USER, {user_uid: uid})
+        }
+  },
+  mounted(){
+      this.setCurrentUser(firebase.auth().currentUser?
+        firebase.auth().currentUser.uid: null)
   }
 }
 </script>

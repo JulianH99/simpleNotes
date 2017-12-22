@@ -4,16 +4,26 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import firebase from 'firebase'
+
 var VueTouch = require('vue-touch')
 
 Vue.use(VueTouch, {name:'v-touch'})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store: store,
-  template: '<App/>',
-  components: { App }
+
+firebase.auth().onAuthStateChanged(user => {
+    console.log(user)
+    new Vue({
+        el: '#app',
+        router,
+        store: store,
+        template: '<App/>',
+        components: { App }
+    })
+
 })
+
+
+

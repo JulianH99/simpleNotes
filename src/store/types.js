@@ -7,5 +7,6 @@ export default {
     FETCH_TRASHED_NOTES : 'fetchTrashedNotes',
     FULL_DELETE_NOTE    : 'fullDeleteNote',
     RESET_SELECTED      : 'resetSelected',
-    UNDELETE_NOTE       : 'undeleteNote'
+    UNDELETE_NOTE       : 'undeleteNote',
+    SET_CURRENT_USER    : 'setCurrentUser'
 }

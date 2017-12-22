@@ -5,14 +5,20 @@ import TrashedNoteList from '@/components/Notes/TrashedNoteList'
 import NoteDetails from '@/components/Notes/NoteDetails'
 import AddNote from '@/components/Notes/AddNote'
 import About from '@/components/About'
+import Login from '@/components/Login'
+import firebase from 'firebase'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
     routes: [
         {
             path: '/',
-            redirect: 'notes'
+            redirect: 'login'
+        },
+        {
+            path: '/login',
+            component: Login
         },
         {
             path: '/notes',
@@ -37,3 +43,5 @@ export default new Router({
 
   ]
 })
+
+export default router

@@ -10,7 +10,8 @@ var store = new Vuex.Store({
     state: {
         notes: [],
         trashedNotes: [],
-        selectedNote: {}
+        selectedNote: {},
+        user_uid: ''
     },
     getters: {
         notes : state => state.notes,
