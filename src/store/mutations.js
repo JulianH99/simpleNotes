@@ -83,8 +83,11 @@ export default {
     },
     [types.FETCH_TRASHED_NOTES](state){
         state.trashedNotes = []
-        notesRef.where('trashed', '==', true).orderBy('created')
-        .onSnapshot( snapShot => {
+        notesRef
+            .where('trashed', '==', true)
+            .where('user', '==', state.user_uid)
+            .orderBy('created')
+            .onSnapshot( snapShot => {
 
             snapShot.docChanges.forEach( change => {
 
