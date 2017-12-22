@@ -9,6 +9,8 @@
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 2.5em;
+    column-count: 2;
+    column-gap: 1em;
 }
 
 </style>

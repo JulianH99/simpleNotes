@@ -14,6 +14,7 @@
     background: $darkGray;
     font-family: 'Roboto';
     border-radius: 8px;
+    display: inline-block;
 
     //float: left;
     width: 100%;

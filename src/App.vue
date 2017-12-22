@@ -59,6 +59,7 @@ export default {
 
 #app, body{
     max-height: 100vh;
+    max-width: 100vw;
 }
 body{
     background: $backgroundColor;
